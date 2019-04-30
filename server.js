@@ -4,7 +4,7 @@ const path = require("path");
 
 //set up Express App
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
@@ -24,6 +24,11 @@ app.get("/reserve", function(req, res){
 
 app.get("/tables", function(req, res){
     res.sendFile(path.join(__dirname, "tables.html"));
+
+    for(var i = 0; i < reservations.length; i++){
+        var newCard = $("<div class='card'></div>");
+
+    }
 });
 
 app.post("/api/reserve", function(req, res) {
@@ -39,6 +44,7 @@ app.post("/api/reserve", function(req, res) {
 
     res.json(newReservation);
 })
+
 
 //START SERVER
 app.listen(PORT, function(){
