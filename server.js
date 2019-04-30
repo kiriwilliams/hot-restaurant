@@ -9,9 +9,11 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
+var tables = {
+    reservations: [],
+    waitlist: []
+};
 
-var reservations = [];
-var waitlist = [];
 
 //Default route
 app.get("/", function(req, res){
@@ -25,21 +27,21 @@ app.get("/reserve", function(req, res){
 app.get("/tables", function(req, res){
     res.sendFile(path.join(__dirname, "tables.html"));
 
-    for(var i = 0; i < reservations.length; i++){
-        var newCard = $("<div class='card'></div>");
-
-    }
 });
+
+app.get("/api/tables", function(req, res){
+    return res.json(tables);
+})
 
 app.post("/api/reserve", function(req, res) {
     var newReservation = req.body;
 
     console.log(newReservation);
-    if(reservations.length < 5){
-        reservations.push(newReservation);
+    if(tables.reservations.length < 5){
+        tables.reservations.push(newReservation);
     }
     else{
-        waitlist.push(newReservation);
+        tables.waitlist.push(newReservation);
     }
 
     res.json(newReservation);
