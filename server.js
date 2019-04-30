@@ -10,6 +10,9 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
 
+var reservations = [];
+var waitlist = [];
+
 //Default route
 app.get("/", function(req, res){
     res.sendFile(path.join(__dirname, "index.html"));
@@ -23,6 +26,19 @@ app.get("/tables", function(req, res){
     res.sendFile(path.join(__dirname, "tables.html"));
 });
 
+app.post("/api/reserve", function(req, res) {
+    var newReservation = req.body;
+
+    console.log(newReservation);
+    if(reservations.length < 5){
+        reservations.push(newReservation);
+    }
+    else{
+        waitlist.push(newReservation);
+    }
+
+    res.json(newReservation);
+})
 
 //START SERVER
 app.listen(PORT, function(){
