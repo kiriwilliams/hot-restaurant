@@ -36,17 +36,20 @@
         $.get("api/tables", function(data){
             console.log(data);
             var reservations = data.reservations;
-            reservations.forEach(function(reservation){
-                var newCard = $("<div class='card'></div>");
-            })
+            for(var i = 0; i < reservations.length; i++){
+                var reservation = reservations[i]
+                var newCard = makeCard(i+1, reservation.id, reservation.);
+                $("#reservations").append(newCard);
+            }
         });
 
-        function makeCard(){
+        function makeCard(table,id){
             var card = $("<div class='card'></div>");
             var cardBody = $("<div class = 'card-body'></div>");
-            var cardTitle = $("<h5>");
-            var cardContent = $("<p>");
-            
+            var cardTitle = $("<h5>Table #</h5>").append(table);
+            var id = $("<p>").text("ID: ").append(id); 
+            card.append(cardBody.append(cardTitle).append(id));        
+            return card;   
         }
     </script>
 </body>
