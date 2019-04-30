@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Postaurant Table Reservation</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Jumbotron -->
+        <div class="jumbotron" style="background-color: rgb(153, 12, 12); color: white">
+            <h1 class="text-center">Postaurant Table Reservation</h1>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <!-- Add reservation  -->
+                <div class="card mb-4">
+                    <div class="card-header" style="background-color: blue; color: white">Add Reservation</div>
+                    <div class="card-body">
+
+                        <!-- Entry Form -->
+                        <form id="Reservation Form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input class="form-control" id="guestName" name="Name" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input class="form-control" id="phone" name="phone" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input class="form-control" id="guestEmail" name="Email" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="uniqueid">UniqueID</label>
+                                <input class="form-control" id="uniqueid" name="uniqueid" type="text">
+                            </div>
+                            <button class="btn btn-primary float-right" id="submit" type="submit">Submit</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
