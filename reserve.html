@@ -71,9 +71,13 @@
                 id: $("#uniqueid").val().trim()
             };
             $.post("/api/reserve", newReservation)
-                .then(function (data) {
-                    console.log("add.html", data);
-                    alert("Saving reservation");
+                .then(function (reservation) {
+                    if(reservation){
+                        alert("Your reservation has been booked!");
+                    }
+                    else{
+                        alert("There are no open reservations. You have been added to the waitlist.");
+                    }
                 });
         })
 
