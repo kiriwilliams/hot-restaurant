@@ -31,7 +31,7 @@ app.get("/tables", function(req, res){
 
 app.get("/api/tables", function(req, res){
     return res.json(tables);
-})
+});
 
 app.post("/api/reserve", function(req, res) {
     var newReservation = req.body;
@@ -39,13 +39,15 @@ app.post("/api/reserve", function(req, res) {
     console.log(newReservation);
     if(tables.reservations.length < 5){
         tables.reservations.push(newReservation);
+        return res.json(true);
     }
     else{
         tables.waitlist.push(newReservation);
+        return res.json(false);
     }
 
-    res.json(newReservation);
-})
+    // res.json(newReservation);
+});
 
 
 //START SERVER
