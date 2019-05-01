@@ -45,8 +45,6 @@ app.post("/api/reserve", function(req, res) {
         tables.waitlist.push(newReservation);
         return res.json(false);
     }
-
-    // res.json(newReservation);
 });
 
 
