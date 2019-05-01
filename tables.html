@@ -16,24 +16,36 @@
     <div class="container">
         <div class="jumbotron"></div>
 
-
-        <div class="card">
-            <h5 class="card-header">Current Reservations</h5>
-            <div class="card-body" id="reservations">
-
-
-
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <h5 class="card-header">Current Reservations</h5>
+                    <div class="card-body" id="reservations">
+                    </div>
+                </div>
+                <div class="card">
+                    <h5 class="card-header">Waitlist</h5>
+                    <div class="card-body" id="waitlist"></div>
+                </div>
             </div>
         </div>
-        <div class="card">
-            <h5 class="card-header">Waitlist</h5>
-            <div class="card-body" id="waitlist"></div>
-
-
+        <div class="row">
+            <div class='col-md-12'>
+                <a href="#" id="clear">Clear</a> |
+                <a href="./api/tables">API Tables Link</a>
+            </div>
         </div>
-    </div>
+
     </div>
     <script>
+        $("#clear").on("click", function(event){
+            // event.preventDefault();
+            $.post("api/clear", function(data){
+                alert("Existing entries are being cleared...");
+                $("#reservations").empty();
+                $("#waitlist").empty();
+            });
+        });
         $.get("api/tables", function (data) {
             console.log(data);
             var reservations = data.reservations;
