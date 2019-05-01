@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Postaurant Table Reservation</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron"></div>
+
+
+        <div class="card">
+            <h5 class="card-header">Current Reservations</h5>
+            <div class="card-body" id="reservations">
+
+
+
+            </div>
+        </div>
+        <div class="card">
+            <h5 class="card-header">Waitlist</h5>
+            <div class="card-body" id="waitlist"></div>
+
+
+        </div>
+    </div>
+    </div>
+    <script>
+        $.get("api/tables", function (data) {
+            console.log(data);
+            var reservations = data.reservations;
+            for (var i = 0; i < reservations.length; i++) {
+                var reservation = reservations[i];
+                var newCard = makeCard(i + 1, reservation.id, reservation.name,reservation.email,reservation.phone);
+                $("#reservations").append(newCard);
+            }
+
+            var waitlist = data.waitlist;
+            for(var i = 0; i < waitlist.length; i++){
+                var waitlister = waitlist[i];
+                var newCard = makeCard(i + 1, waitlister.id, waitlister.name, waitlister.email, waitlister.phone);
+                $("#waitlist").append(newCard);
+            }
+        });
+
+        function makeCard(table, id, name, email, phone) {
+            var card = $("<div class='card'></div>");
+            var cardBody = $("<div class = 'card-body'></div>");
+            var cardTitle = $("<h5>Table #</h5>").append(table);
+
+                var id = addInfo("ID",id);
+                var name = addInfo("Name",name);
+                var email = addInfo("Email",email);
+                var phone = addInfo("Phone", phone);
+            card.append(cardBody.append(cardTitle).append(id).append(name).append(email).append(phone));
+            return card;
+        }
+
+        function addInfo(type,data){
+            var p = $("<span>").text(type+": "+data).append("<br>");
+            return p;
+        }
+    </script>
+</body>
+
+</html>
