@@ -47,6 +47,12 @@ app.post("/api/reserve", function(req, res) {
     }
 });
 
+app.post("/api/clear", function(req, res){
+    tables.reservations = [];
+    tables.waitlist = [];
+    return res.json(true);
+});
+
 
 //START SERVER
 app.listen(PORT, function(){
