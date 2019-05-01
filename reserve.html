@@ -11,6 +11,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico%7CAbel" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" crossorigin="anonymous">    
+    <style>
+        h1 {
+            font-family: 'Pacifico';
+        }        
+        h3 {
+            font-family: 'Abel';
+        }
+    </style>
 
 </head>
 
@@ -19,9 +29,15 @@
     <div class="container">
 
         <!-- Jumbotron -->
-        <div class="jumbotron" style="background-color: rgb(153, 12, 12); color: white">
-            <h1 class="text-center">Postaurant Table Reservation</h1>
-        </div>
+        <div class="jumbotron" style="background-color:rgb(208, 240, 238); color: rgb(102, 99, 95)">
+                <h1 class="text-center"><i class="fas fa-hamburger"></i> Hot Restaurant</h1>
+                <hr>            <h3 class="text-center">We have only 5 tables left! Book now before they are all gone!!</h3>
+                <div class="row">                
+                    <div class="col-lg-12"><br>                    
+                        <a href="/tables"> <button class="btn btn-large btn-primary align text-center " id="viewtables" type="viewtable">View Tables</button></a>
+                        <a href="/reserve"> <button class="btn btn-large btn-info align text-center" id="makereservation" type="makereservation">Make Reservation</button></a></div><br></p>
+                </div>
+            </div>
 
         <div class="row">
 
@@ -29,7 +45,7 @@
 
                 <!-- Add reservation  -->
                 <div class="card mb-4">
-                    <div class="card-header" style="background-color: blue; color: white">Add Reservation</div>
+                    <div class="card-header" style="background-color: rgb(96, 96, 177); color: white">Add Reservation</div>
                     <div class="card-body">
 
                         <!-- Entry Form -->
@@ -88,3 +104,4 @@
 
     </script>
 </body>
+</html>
